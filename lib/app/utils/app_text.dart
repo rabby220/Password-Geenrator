@@ -15,6 +15,20 @@ class AppText {
   static const String darkThemeText = "Dark Theme";
   static const String lightThemeText = "Light Theme";
 
+
+  //Check box Data
+  static const String uppercaseLetterText = "Uppercase letters";
+  static const String lowercaseLetterText = "Lowercase letters";
+  static const String symbolsText = "Symbols";
+  static const String numbersText = "Numbers";
+
+  //Three button Text
+  static const String generatePasswordText = "Generate Password";
+  static const String copyText = "Copy";
+  static const String saveText = "Save";
+
+
+
   static TextStyle bottomDarkTextStyle = GoogleFonts.ubuntu(
     fontSize: 18.0,
     color: AppColors.indigoColor,

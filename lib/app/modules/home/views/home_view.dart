@@ -22,76 +22,88 @@ class HomeView extends GetView<HomeController> {
         () => IndexedStack(
           index: controller.selectIndex.value,
           children: const [
-            SettingsView(),
             RandomPassView(),
             HistoryView(),
-            //SettingsView(),
+            SettingsView(),
           ],
         ),
       ),
-      bottomNavigationBar: Obx(() =>
-          _buildBottomNavigationBar(context, controller, settingsController)),
+      bottomNavigationBar: Obx(
+        () => _buildBottomNavigationBar(
+          context,
+          controller,
+          settingsController,
+        ),
+      ),
     );
   }
 }
 
 // build a Bottom Navigation bar Widget
-Widget _buildBottomNavigationBar(BuildContext context,
-    HomeController controller, SettingsController settingsController) {
+Widget _buildBottomNavigationBar(
+  BuildContext context,
+  HomeController controller,
+  SettingsController settingsController,
+) {
   return FlashyTabBar(
-      animationCurve: Curves.easeOutQuart,
-      animationDuration: const Duration(seconds: 1),
-      height: 55,
-      backgroundColor: settingsController.isSwitch.value
-          ? AppColors.blackColor
-          : AppColors.whiteColor,
-      iconSize: 32,
-      shadows: const [
-        BoxShadow(
-            color: Colors.indigo,
-            blurRadius: 15.0,
-            blurStyle: BlurStyle.outer,
-            offset: Offset(-1, -1),
-            spreadRadius: 1.0),
-      ],
-      items: [
-        _flashyTabBarItem(
-          icon: AppIcons.generatePasswordIcon,
-          title: AppText.passwordGeneratorText,
-          settingsController: settingsController,
-
-        ),
-        _flashyTabBarItem(
-          icon: AppIcons.historyIcon,
-          title: AppText.historyText,
-          settingsController: settingsController,
-        ),
-        _flashyTabBarItem(
-          icon: AppIcons.settingsIcon,
-          title: AppText.settingsText,
-          settingsController: settingsController,
-        ),
-      ],
-      selectedIndex: controller.selectIndex.value,
-      onItemSelected: (index) {
-        controller.selectIndex.value = index;
-      });
+    animationCurve: Curves.easeOutQuart,
+    animationDuration: const Duration(seconds: 1),
+    height: 55,
+    backgroundColor: settingsController.isSwitch.value
+        ? AppColors.blackColor
+        : AppColors.whiteColor,
+    iconSize: 32,
+    shadows: const [
+      BoxShadow(
+          color: Colors.indigo,
+          blurRadius: 15.0,
+          blurStyle: BlurStyle.outer,
+          offset: Offset(-1, -1),
+          spreadRadius: 1.0),
+    ],
+    items: [
+      _flashyTabBarItem(
+        icon: AppIcons.generatePasswordIcon,
+        title: AppText.passwordGeneratorText,
+        settingsController: settingsController,
+      ),
+      _flashyTabBarItem(
+        icon: AppIcons.historyIcon,
+        title: AppText.historyText,
+        settingsController: settingsController,
+      ),
+      _flashyTabBarItem(
+        icon: AppIcons.settingsIcon,
+        title: AppText.settingsText,
+        settingsController: settingsController,
+      ),
+    ],
+    selectedIndex: controller.selectIndex.value,
+    onItemSelected: (index) {
+      controller.selectIndex.value = index;
+    },
+  );
 }
 
 //FlashyTabBarItem List
 FlashyTabBarItem _flashyTabBarItem({
   required Icon icon,
   required String title,
-  required SettingsController settingsController
+  required SettingsController settingsController,
 }) {
   return FlashyTabBarItem(
     icon: icon,
-    activeColor: settingsController.isSwitch.value ? AppColors.redColor : AppColors.redColor,
-      inactiveColor: settingsController.isSwitch.value ? AppColors.whiteColor : AppColors.blackColor,
+    activeColor: settingsController.isSwitch.value
+        ? AppColors.redColor
+        : AppColors.redColor,
+    inactiveColor: settingsController.isSwitch.value
+        ? AppColors.whiteColor
+        : AppColors.blackColor,
     title: Text(
       title,
-      style: settingsController.isSwitch.value ? AppText.bottomDarkTextStyle : AppText.bottomLightTextStyle
-
+      style: settingsController.isSwitch.value
+          ? AppText.bottomDarkTextStyle
+          : AppText.bottomLightTextStyle,
     ),
   );
 }

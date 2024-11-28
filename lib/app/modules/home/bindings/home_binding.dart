@@ -1,5 +1,4 @@
 import 'package:get/get.dart';
-
 import '../../history/controllers/history_controller.dart';
 import '../../random_pass/controllers/random_pass_controller.dart';
 import '../../settings/controllers/settings_controller.dart';

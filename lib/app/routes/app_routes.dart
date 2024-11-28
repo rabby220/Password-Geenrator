@@ -6,7 +6,7 @@ abstract class Routes {
   static const HOME = _Paths.HOME;
   static const SETTINGS = _Paths.SETTINGS;
   static const HISTORY = _Paths.HISTORY;
-  static const TEST = _Paths.TEST;
+
   static const RANDOM_PASS = _Paths.RANDOM_PASS;
 }
 
@@ -15,6 +15,6 @@ abstract class _Paths {
   static const HOME = '/home';
   static const SETTINGS = '/settings';
   static const HISTORY = '/history';
-  static const TEST = '/test';
+
   static const RANDOM_PASS = '/random-pass';
 }

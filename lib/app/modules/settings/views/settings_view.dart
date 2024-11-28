@@ -4,8 +4,6 @@ import 'package:random_password/app/utils/app_colors.dart';
 import 'package:random_password/app/utils/app_icons.dart';
 import '../../../utils/app_text.dart';
 import '../controllers/settings_controller.dart';
-import 'package:vibration/vibration.dart';
-import 'package:hive_flutter/hive_flutter.dart';
 
 class SettingsView extends GetView<SettingsController> {
   const SettingsView({super.key});
@@ -15,11 +13,7 @@ class SettingsView extends GetView<SettingsController> {
       appBar: AppBar(
         title: const Text('Settings'),
       ),
-      body: //ValueListenableBuilder(
-          // valueListenable: Hive.box('userBox').listenable(),
-          // builder: (context, userBox, child) =>
-          _buildListWidget(context, controller),
-      // ),
+      body: _buildListWidget(context, controller),
     );
   }
 }
@@ -35,6 +29,7 @@ Widget _buildListWidget(BuildContext context, SettingsController controller) {
         padding: const EdgeInsets.all(20.0),
         child: ListView(
           children: [
+            //For Theme
             Obx(
               () => _buildListTileWidget(
                 title: AppText.themeText,
@@ -53,6 +48,8 @@ Widget _buildListWidget(BuildContext context, SettingsController controller) {
                 icon: AppIcons.darkModeRoundedIcon,
               ),
             ),
+
+            //For Vibration
             Obx(
               () => _buildListTileWidget(
                 title: AppText.vibrationText,
@@ -69,6 +66,8 @@ Widget _buildListWidget(BuildContext context, SettingsController controller) {
                 icon: AppIcons.vibrationRoundedIcon,
               ),
             ),
+
+            //For About app
             Obx(
               () => _buildListTileWidget(
                 title: AppText.aboutText,
@@ -77,6 +76,8 @@ Widget _buildListWidget(BuildContext context, SettingsController controller) {
                 icon: AppIcons.infoOutlineRoundedIcon,
               ),
             ),
+
+            //For Version
             Obx(
               () => _buildListTileWidget(
                 title: AppText.versionText,
@@ -123,3 +124,7 @@ Widget _buildSwitch(bool isSwitch, ValueChanged<bool> onChanged) {
     activeColor: AppColors.indigoColor,
   );
 }
+
+
+//
+
